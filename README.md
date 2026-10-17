@@ -24,11 +24,6 @@
 <img src="Overview of GPGA.jpg" width="80%" alt="GPGA framework">
 </p>
 
-> **Patch Embedding-Anomaly Score Feedback Guidance Mechanism for Zero-Shot Industrial Anomaly Detection**
->
-> Submitted to *Computers and Electrical Engineering*; currently under review.
-
-
 
 ## Main Results
 
@@ -108,6 +103,7 @@ VisualAD is evaluated on 13 zero-shot anomaly detection benchmarks across indust
 |:--|:--|:--|:--|
 | MVTec-AD | Industrial | Object and texture anomaly detection benchmark with image-level labels and pixel-level masks. | [Google Drive](https://drive.google.com/drive/folders/126ZyuMsgrmwJd_7hlNJQitv_liXfRzJt?usp=sharing) |
 | VisA | Industrial | Visual anomaly benchmark for industrial object inspection across multiple product categories. | [Google Drive](https://drive.google.com/drive/folders/1cgpyk8Gfpl_GVnA_l-K8tOV67mKOZdZj?usp=sharing) |
+| MPDD | Industrial | Metal parts defect detection benchmark with image-level labels and pixel-level defect annotations. | [Official Repository](https://github.com/stepanje/MPDD) |
 | BTAD | Industrial | BTech industrial anomaly detection benchmark with three product categories. | [Google Drive](https://drive.google.com/drive/folders/1GW9kXgxJM0kC2TX3vWuydaiRkcdg7gjG?usp=sharing) |
 | SDD | Industrial | Surface defect detection benchmark with image-level labels and pixel-level annotations for defects on electrical commutators. | [Official Website](https://www.vicos.si/resources/kolektorsdd/) |
 | DAGM | Industrial | Synthetic textured-surface defect benchmark with annotated defects. | [Google Drive](https://drive.google.com/drive/folders/1gkjep91EdTgDlEuEVfK-iKVr2mzJi81G?usp=sharing) |
@@ -124,7 +120,6 @@ We adopt the same dataset structure and JSON format as [AnomalyCLIP](https://git
 | Backbone | Pretrained CLIP ViT-L/14@336px |
 | Input resolution | 518 × 518 pixels |
 | Selected visual feature layers | 6, 12, 18, 24 |
-| Patch embedding projection | 1024 → 768 dimensions per selected layer |
 | Prompt depth | 4 |
 | Prompt length | 6 |
 | Top-k patches | 100 |
