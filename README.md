@@ -1,57 +1,93 @@
-# FgmCLIP: Patch Embedding-Anomaly Score Feedback Guidance Mechanism for Zero-Shot Industrial Anomaly Detection
+# Patch Embedding-Anomaly Score Feedback Guidance Mechanism for Zero-Shot Industrial Anomaly Detection
 
-This repository accompanies the manuscript:
+## Introduction
+
+<p align="center">
+  <img src="Graphical-Abstract.jpg" width="80%" alt="GPGA Graphical-Abstract">
+</p>
+
+<p align="justify">
+  <strong>Abstract:</strong> 		Zero-shot industrial anomaly detection aims to detect and localize unknown abnormal regions in target-domain samples by training only on source-domain data. However, most existing methods adopt a cascaded framework of ``embedding representation-similarity matching-anomaly scoring-anomaly output''. In this framework, anomaly scores are not used as feedback to dynamically guide information interaction and semantic aggregation among image patch embeddings. Consequently, anomaly-related information remains insufficiently utilized in constructing image embeddings, causing the models to easily confuse salient responses induced by background variations or local appearance changes with real anomalies in scenarios with complex background variations and low contrast, thereby affecting detection performance.	To this end, this paper proposes a patch embedding-anomaly score feedback guidance mechanism (FgmCLIP). FgmCLIP employs an anomaly score-guided patch embedding representation approach that jointly incorporates correlations among patch embeddings and an anomaly score-guided bias into attention modeling. By combining residual fusion with cluster-level weighted fusion, it performs semantic aggregation of potentially abnormal patch embeddings to construct more discriminative image embeddings. It further develops a dual-path anomaly scoring loss to impose joint constraints on image-level anomaly discrimination and pixel-level anomaly localization, thereby improving anomaly detection performance. Experimental results on seven representative industrial anomaly detection datasets show that FgmCLIP achieves average scores of 90.8, 91.9, 95.3, and 49.6 on Image-AUROC (area under the receiver operating characteristic curve), Image-AP (average precision), Pixel-AUROC, and Pixel-F1-max (maximum F1-score)}, respectively, outperforming state-of-the-art methods by 0.67%, 2.11%, 0.74%, 2.90%, respectively. FgmCLIP also enables accurate detection of diverse anomaly types in complex industrial scenarios.
+</p>
+
+
+## Highlights
+
+- **We propose FgmCLIP, a patch embedding–anomaly score feedback guidance mechanism for zero-shot industrial anomaly detection.
+- **AGR uses anomaly scores to guide patch interactions and weighted cluster fusion.
+- **DPL supervises image-level discrimination and pixel-level localization.
+- **FgmCLIP achieves competitive performance on seven industrial anomaly detection datasets, including MVTec-AD, VisA, MPDD, BTAD, SDD, DAGM, and DTD-Synthetic.
+
+
+## Overview of FgmCLIP
+<p align="center">
+<img src="Overview of GPGA.jpg" width="80%" alt="GPGA framework">
+</p>
 
 > **Patch Embedding-Anomaly Score Feedback Guidance Mechanism for Zero-Shot Industrial Anomaly Detection**
 >
 > Submitted to *Computers and Electrical Engineering*; currently under review.
 
-## News
 
-- 2026-06-24: Submitted to Computers and Electrical Engineering
-- The paper is currently under review. The code will be made available upon acceptance.
-
-## Overview
-
-FgmCLIP is a CLIP-based framework for zero-shot industrial anomaly detection. It uses patch-level anomaly scores to guide interactions among patch embeddings and their semantic aggregation, producing image-level representations for anomaly discrimination. A dual-path anomaly scoring loss jointly supervises image-level detection and pixel-level localization.
-
-## Highlights
-
-- **Anomaly score feedback-guided patch representation (AGR):** Fused patch anomaly scores guide Top-k patch selection, attention interactions, and cluster-level weighted aggregation to construct discriminative image-level representations.
-- **Residual fusion and cluster-level aggregation:** AGR combines attention-enhanced features with a residual path, applies K-Means clustering, and weights regional cluster representations using their mean anomaly scores.
-- **Dual-path anomaly scoring loss (DPL):** Image-level binary cross-entropy loss and pixel-level Focal and Dice losses jointly supervise anomaly detection and localization.
-- **Separate image-level and pixel-level outputs:** AGR operates on image-level representation construction. The pixel-level anomaly score map is generated from multi-layer patch-text similarities and supervised by pixel-level losses.
-- **Seven industrial benchmarks:** Evaluation covers MVTec-AD, VisA, MPDD, BTAD, SDD, DAGM, and DTD-Synthetic under a cross-dataset zero-shot protocol.
 
 ## Main Results
 
-The following results are transcribed from Tables 2-5 of the manuscript. All values are percentages (%); higher is better. Results are reported as mean ± standard deviation over five independent runs with seeds 111-115.
+All values are expressed as percentages (%); ↑ indicates that higher is better. Bold values indicate the best reported results in each row. 
 
-### FgmCLIP on Seven Industrial Benchmarks
+### Table 1. Image-AUROC ↑
 
-| Dataset | Image-AUROC ↑ | Image-AP ↑ | Pixel-AUROC ↑ | Pixel-F1-max ↑ |
-|:--|:--:|:--:|:--:|:--:|
-| MVTec-AD | 91.6 ± 0.2 | 96.1 ± 0.1 | 90.2 ± 0.1 | 43.5 ± 0.1 |
-| VisA | 87.1 ± 0.1 | 89.2 ± 0.1 | 95.9 ± 0.2 | 37.1 ± 0.1 |
-| MPDD | 74.3 ± 0.4 | 79.8 ± 0.5 | 96.4 ± 0.3 | 33.4 ± 0.4 |
-| BTAD | 90.6 ± 0.2 | 95.6 ± 0.2 | 92.9 ± 0.3 | 47.8 ± 0.4 |
-| SDD | 96.5 ± 0.1 | 90.4 ± 0.2 | 97.8 ± 0.1 | 48.7 ± 0.2 |
-| DAGM | 98.4 ± 0.3 | 93.7 ± 0.3 | 94.9 ± 0.2 | 62.9 ± 0.4 |
-| DTD-Synthetic | 97.4 ± 0.3 | 98.6 ± 0.3 | 98.9 ± 0.2 | 73.6 ± 0.4 |
-| **Average** | **90.8 ± 0.2** | **91.9 ± 0.2** | **95.3 ± 0.1** | **49.6 ± 0.3** |
+| Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| MVTec-AD [54] | 91.8† ± 0.0 | 86.0 ± 0.2 | 91.6 ± 0.3 | 89.3 ± 0.3 | **92.5† ± 0.0** | 86.9† | 90.9† | 90.7† | 91.6 ± 0.2 |
+| VisA [55] | 78.1† ± 0.0 | 78.0 ± 0.3 | 82.0 ± 0.4 | 86.0 ± 0.3 | 79.2† ± 0.0 | 84.4† | 83.3† | 85.2† | **87.1 ± 0.1** |
+| MPDD [56] | 63.6 ± 0.0 | 72.8 ± 0.3 | 77.1 ± 0.2 | 76.1 ± 0.4 | 72.7 ± 0.0 | 75.5† | 73.7† | **80.1†** | 74.3 ± 0.4 |
+| BTAD [57] | 68.2 ± 0.0 | 73.6 ± 0.2 | 88.2 ± 0.3 | 88.5 ± 0.3 | 80.3 ± 0.0 | 88.8† | 90.0† | 90.5† | **90.6 ± 0.2** |
+| SDD [58] | 84.3 ± 0.0 | 79.9 ± 0.2 | 84.7 ± 0.2 | 97.1 ± 0.2 | 94.4 ± 0.0 | **97.4†** | 92.2† | 96.0† | 96.5 ± 0.1 |
+| DAGM [59] | 91.8 ± 0.0 | 94.4 ± 0.1 | 97.7 ± 0.2 | **99.2 ± 0.1** | 89.7 ± 0.0 | — | — | 95.5† | 98.4 ± 0.3 |
+| DTD-Synthetic [60] | 93.2 ± 0.0 | 86.5 ± 0.3 | 93.4 ± 0.3 | 95.5 ± 0.2 | 94.9 ± 0.0 | — | 88.8† | 93.1† | **97.4 ± 0.3** |
+| **Average** | 81.6 ± 0.0 | 81.6 ± 0.2 | 87.8 ± 0.3 | 90.2 ± 0.3 | 86.2 ± 0.0 | — | — | 90.2† | **90.8 ± 0.2** |
 
-### Average Performance Comparison
+### Table 2. Image-AP ↑
 
-The table below reports the seven-dataset averages for selected reproduced baselines and FgmCLIP under the evaluation settings described in the manuscript.
+| Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| MVTec-AD [54] | **96.5 ± 0.0** | 93.6 ± 0.2 | 96.2 ± 0.2 | 94.4 ± 0.2 | 95.1 ± 0.0 | 93.7† | 96.1† | 95.8† | 96.1 ± 0.1 |
+| VisA [55] | 81.2 ± 0.0 | 81.3 ± 0.3 | 85.4 ± 0.2 | 86.5 ± 0.2 | 80.2 ± 0.0 | 86.2† | 87.5† | 87.8† | **89.2 ± 0.1** |
+| MPDD [56] | 69.9 ± 0.0 | 80.4 ± 0.3 | 81.8 ± 0.3 | 76.9 ± 0.3 | **83.6 ± 0.0** | 77.0† | 79.6† | 82.8† | 79.8 ± 0.5 |
+| BTAD [57] | 70.9 ± 0.0 | 68.5 ± 0.3 | 87.3 ± 0.1 | 93.7 ± 0.2 | 72.8 ± 0.0 | 88.8† | **96.9†** | 82.0† | 95.6 ± 0.2 |
+| SDD [58] | 77.4 ± 0.0 | 71.6 ± 0.4 | 80.0 ± 0.1 | 90.4 ± 0.3 | 90.8 ± 0.0 | **93.5†** | 68.9† | 89.5† | 90.4 ± 0.2 |
+| DAGM [59] | 79.5 ± 0.0 | 83.8 ± 0.2 | 92.4 ± 0.3 | 89.7 ± 0.3 | 76.1 ± 0.0 | — | — | **95.1†** | 93.7 ± 0.3 |
+| DTD-Synthetic [60] | 92.6 ± 0.0 | 95.1 ± 0.3 | 96.9 ± 0.3 | 98.0 ± 0.1 | 93.3 ± 0.0 | — | 96.3† | 97.0† | **98.6 ± 0.3** |
+| **Average** | 81.1 ± 0.0 | 82.0 ± 0.3 | 88.6 ± 0.2 | 89.9 ± 0.3 | 84.6 ± 0.0 | — | — | 90.0† | **91.9 ± 0.2** |
 
-| Method | Image-AUROC ↑ | Image-AP ↑ | Pixel-AUROC ↑ | Pixel-F1-max ↑ |
-|:--|:--:|:--:|:--:|:--:|
-| APRIL-GAN | 81.6 ± 0.2 | 82.0 ± 0.3 | 84.9 ± 0.3 | 47.2 ± 0.3 |
-| AnomalyCLIP | 87.8 ± 0.3 | 88.6 ± 0.2 | 94.5 ± 0.3 | 40.5 ± 0.3 |
-| AdaCLIP | 90.2 ± 0.3 | 89.9 ± 0.3 | 94.2 ± 0.3 | 48.2 ± 0.2 |
-| **FgmCLIP** | **90.8 ± 0.2** | **91.9 ± 0.2** | **95.3 ± 0.1** | **49.6 ± 0.3** |
+### Table 3. Pixel-AUROC ↑
 
-For each dataset, metrics are computed separately for each target category and then averaged across categories. The Average row summarizes performance across the seven datasets. Full baseline comparisons and ablation studies are reported in the manuscript.
+| Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| MVTec-AD [54] | 85.1† ± 0.0 | 87.5 ± 0.3 | 91.1 ± 0.4 | 88.6 ± 0.3 | 86.6† ± 0.0 | 88.0† | **92.7†** | 88.0† | 90.2 ± 0.1 |
+| VisA [55] | 79.6† ± 0.0 | 94.2 ± 0.2 | 95.4 ± 0.3 | 95.5 ± 0.2 | 85.9† ± 0.0 | 94.9† | 95.3† | 95.6† | **95.9 ± 0.2** |
+| MPDD [56] | 76.4 ± 0.0 | 94.1 ± 0.4 | 96.5 ± 0.2 | 96.1 ± 0.1 | 62.3 ± 0.0 | **96.8†** | 96.2† | 96.4† | 96.4 ± 0.3 |
+| BTAD [57] | 72.7 ± 0.0 | 60.9 ± 0.3 | **94.1 ± 0.3** | 92.2 ± 0.2 | 75.2 ± 0.0 | 90.7† | 93.6† | 92.2† | 92.9 ± 0.3 |
+| SDD [58] | 68.8 ± 0.0 | 79.7 ± 0.2 | 90.7 ± 0.2 | **97.8 ± 0.2** | 97.1 ± 0.0 | 97.1† | 96.8† | 97.1† | **97.8 ± 0.1** |
+| DAGM [59] | 87.6 ± 0.0 | 82.5 ± 0.3 | **95.6 ± 0.3** | 91.5 ± 0.2 | 79.7 ± 0.0 | — | — | 94.3† | 94.9 ± 0.2 |
+| DTD-Synthetic [60] | 83.9 ± 0.0 | 95.4 ± 0.2 | 97.9 ± 0.2 | 97.7 ± 0.3 | 97.7 ± 0.0 | — | 97.9† | 98.6† | **98.9 ± 0.2** |
+| **Average** | 79.2 ± 0.0 | 84.9 ± 0.3 | 94.5 ± 0.3 | 94.2 ± 0.3 | 83.5 ± 0.0 | — | — | 94.6† | **95.3 ± 0.1** |
+
+### Table 4. Pixel-F1-max ↑
+
+| Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| MVTec-AD [54] | 31.7† ± 0.0 | 43.5 ± 0.3 | 37.8 ± 0.2 | **43.6 ± 0.1** | 30.1† ± 0.0 | — | — | 42.2† | 43.5 ± 0.1 |
+| VisA [55] | 14.8† ± 0.0 | 32.3 ± 0.2 | 25.6 ± 0.3 | **37.9 ± 0.2** | 14.7† ± 0.0 | — | — | 32.3† | 37.1 ± 0.1 |
+| MPDD [56] | 15.4 ± 0.0 | 30.7 ± 0.4 | 28.6 ± 0.4 | 30.1 ± 0.2 | 15.6 ± 0.0 | — | — | 30.9† | **33.4 ± 0.4** |
+| BTAD [57] | 18.5 ± 0.0 | 37.3 ± 0.2 | 34.2 ± 0.2 | 47.5 ± 0.4 | 23.4 ± 0.0 | — | — | **47.9†** | 47.8 ± 0.4 |
+| SDD [58] | 21.3 ± 0.0 | **56.0 ± 0.3** | 35.6 ± 0.3 | 50.1 ± 0.1 | 23.1 ± 0.0 | — | — | 48.2† | 48.7 ± 0.2 |
+| DAGM [59] | 13.9 ± 0.0 | 58.0 ± 0.1 | 53.7 ± 0.2 | 55.3 ± 0.1 | 12.8 ± 0.0 | — | — | 62.6† | **62.9 ± 0.4** |
+| DTD-Synthetic [60] | 16.1 ± 0.0 | 72.8 ± 0.2 | 67.8 ± 0.2 | 72.6 ± 0.3 | 46.8 ± 0.0 | — | — | 72.6† | **73.6 ± 0.4** |
+| **Average** | 18.8 ± 0.0 | 47.2 ± 0.3 | 40.5 ± 0.3 | 48.2 ± 0.2 | 23.8 ± 0.0 | — | — | 48.1† | **49.6 ± 0.3** |
+
+**Notes:** † marks results taken directly from the original papers. “—” indicates that the corresponding result was not reported and the method’s source code is not publicly available. Other results are from our reproduction experiments, reported as mean ± standard deviation over five independent runs with seeds 111-115. 
+
 
 ## Experimental Setup
 
@@ -64,9 +100,22 @@ In each experiment, the model is trained on a single source-domain dataset and e
 | MVTec-AD | VisA, MPDD, BTAD, SDD, DAGM, DTD-Synthetic |
 | VisA | MVTec-AD |
 
-Auxiliary training uses the images and annotations from the entire official test split of the source-domain dataset, including normal and abnormal images. Image labels provide image-level supervision, and abnormal-image masks provide pixel-level supervision; normal images use all-zero masks. Target-domain labels and masks are used for evaluation only.
+### 2. Datasets and Data Preparation
 
-No independent validation set is used. As described in the manuscript, default hyperparameters are selected based on test performance on VisA and MVTec-AD and then held fixed for the final comparisons across all target datasets, without further dataset-specific adjustments.
+VisualAD is evaluated on 13 zero-shot anomaly detection benchmarks across industrial inspection and medical imaging. The dataset packages used by this project are available below:
+
+| Dataset | Domain | Description | Download |
+|:--|:--|:--|:--|
+| MVTec-AD | Industrial | Object and texture anomaly detection benchmark with image-level labels and pixel-level masks. | [Google Drive](https://drive.google.com/drive/folders/126ZyuMsgrmwJd_7hlNJQitv_liXfRzJt?usp=sharing) |
+| VisA | Industrial | Visual anomaly benchmark for industrial object inspection across multiple product categories. | [Google Drive](https://drive.google.com/drive/folders/1cgpyk8Gfpl_GVnA_l-K8tOV67mKOZdZj?usp=sharing) |
+| BTAD | Industrial | BTech industrial anomaly detection benchmark with three product categories. | [Google Drive](https://drive.google.com/drive/folders/1GW9kXgxJM0kC2TX3vWuydaiRkcdg7gjG?usp=sharing) |
+| SDD | Industrial | Surface defect detection benchmark with image-level labels and pixel-level annotations for defects on electrical commutators. | [Official Website](https://www.vicos.si/resources/kolektorsdd/) |
+| DAGM | Industrial | Synthetic textured-surface defect benchmark with annotated defects. | [Google Drive](https://drive.google.com/drive/folders/1gkjep91EdTgDlEuEVfK-iKVr2mzJi81G?usp=sharing) |
+| DTD-Synthetic | Industrial | Synthetic anomaly localization benchmark built from texture images. | [Google Drive](https://drive.google.com/drive/folders/1VZIx-k5a6llIlTi2_lNTSJs3zzyelBlV?usp=sharing) |
+
+
+We adopt the same dataset structure and JSON format as [AnomalyCLIP](https://github.com/zqhang/AnomalyCLIP). After downloading a dataset, place it under your local dataset directory and make sure `meta.json` exists in the dataset root. We also provide scripts to generate the required JSON metadata files:
+
 
 ### 2. Backbone and Training Configuration
 
@@ -89,15 +138,10 @@ No independent validation set is used. As described in the manuscript, default h
 
 The backbone name identifies the pretrained CLIP variant; the input resolution used in this study is 518 × 518 pixels.
 
-## Code and Model Release
+## News
 
-The implementation is not yet publicly available. The code will be made available upon acceptance.
-
-Installation instructions, dataset preparation scripts, training and evaluation commands, and checkpoint information will be documented alongside the code release.
-
-## Citation
-
-The manuscript is currently under review. Citation details will be updated following acceptance.
+- 2026-06-24: Submitted to Computers and Electrical Engineering
+- The paper is currently under review. The code will be made available upon acceptance.
 
 ## Acknowledgements
 
