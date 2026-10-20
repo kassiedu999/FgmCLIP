@@ -70,7 +70,16 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 
 ### Table 4. Pixel-F1-max ↑
 
-
+| Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| MVTec-AD [54] | 31.7† ± 0.0 | 43.5 ± 0.3 | 37.8 ± 0.2 | **43.6 ± 0.1** | 30.1† ± 0.0 | — | — | 42.2† | 43.5 ± 0.1 |
+| VisA [55] | 14.8† ± 0.0 | 32.3 ± 0.2 | 25.6 ± 0.3 | **37.9 ± 0.2** | 14.7† ± 0.0 | — | — | 32.3† | 37.1 ± 0.1 |
+| MPDD [56] | 15.4 ± 0.0 | 30.7 ± 0.4 | 28.6 ± 0.4 | 30.1 ± 0.2 | 15.6 ± 0.0 | — | — | 30.9† | **33.4 ± 0.4** |
+| BTAD [57] | 18.5 ± 0.0 | 37.3 ± 0.2 | 34.2 ± 0.2 | 47.5 ± 0.4 | 23.4 ± 0.0 | — | — | **47.9†** | 47.8 ± 0.4 |
+| SDD [58] | 21.3 ± 0.0 | **56.0 ± 0.3** | 35.6 ± 0.3 | 50.1 ± 0.1 | 23.1 ± 0.0 | — | — | 48.2† | 48.7 ± 0.2 |
+| DAGM [59] | 13.9 ± 0.0 | 58.0 ± 0.1 | 53.7 ± 0.2 | 55.3 ± 0.1 | 12.8 ± 0.0 | — | — | 62.6† | **62.9 ± 0.4** |
+| DTD-Synthetic [60] | 16.1 ± 0.0 | 72.8 ± 0.2 | 67.8 ± 0.2 | 72.6 ± 0.3 | 46.8 ± 0.0 | — | — | 72.6† | **73.6 ± 0.4** |
+| **Average** | 18.8 ± 0.0 | 47.2 ± 0.3 | 40.5 ± 0.3 | 48.2 ± 0.3 | 23.8 ± 0.0 | — | — | 48.1† | **49.6 ± 0.3** |
 
 **Notes:** † marks results taken directly from the original papers. “—” indicates that the corresponding result was not reported and the method’s source code is not publicly available. Other results are from our reproduction experiments, reported as mean ± standard deviation over five independent runs with seeds 111-115. 
 
