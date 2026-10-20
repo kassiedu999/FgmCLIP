@@ -21,7 +21,7 @@
 
 ## Overview of FgmCLIP
 <p align="center">
-<img src="Overview of GPGA.jpg" width="80%" alt="GPGA framework">
+<img src="Overview of FgmCLIP.jpg" width="80%" alt="GPGA framework">
 </p>
 
 
@@ -97,7 +97,7 @@ In each experiment, the model is trained on a single source-domain dataset and e
 
 ### 2. Datasets and Data Preparation
 
-VisualAD is evaluated on 13 zero-shot anomaly detection benchmarks across industrial inspection and medical imaging. The dataset packages used by this project are available below:
+FgmCLIP is evaluated on seven industrial anomaly detection benchmarks. The dataset packages used by this project are available below:
 
 | Dataset | Domain | Description | Download |
 |:--|:--|:--|:--|
