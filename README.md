@@ -27,9 +27,9 @@
 
 ## Main Results
 
-All values are expressed as percentages (%); ↑ indicates that higher is better. Bold values indicate the best reported results in each row. 
+In all four tables, means are expressed as percentages (%), and standard deviations in percentage points (pp). (↑) indicates that higher is better. Bold values indicate the best reported results in each row. 
 
-### Table 1. Image-AUROC ↑
+### Table 1. Image-AUROC (↑)
 
 | Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -42,7 +42,7 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 | DTD-Synthetic [60] | 93.2 ± 0.0 | 86.5 ± 0.3 | 93.4 ± 0.3 | 95.5 ± 0.2 | 94.9 ± 0.0 | — | 88.8† | 93.1† | **97.4 ± 0.3** |
 | **Average** | 81.6 ± 0.0 | 81.6 ± 0.2 | 87.8 ± 0.3 | 90.2 ± 0.3 | 86.2 ± 0.0 | — | — | 90.2† | **90.8 ± 0.2** |
 
-### Table 2. Image-AP ↑
+### Table 2. Image-AP (↑)
 
 | Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -55,7 +55,7 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 | DTD-Synthetic [60] | 92.6 ± 0.0 | 95.1 ± 0.3 | 96.9 ± 0.3 | 98.0 ± 0.4 | 93.3 ± 0.0 | — | 96.3† | 97.0† | **98.6 ± 0.3** |
 | **Average** | 81.1 ± 0.0 | 82.0 ± 0.3 | 88.6 ± 0.2 | 89.9 ± 0.3 | 84.6 ± 0.0 | — | — | 90.0† | **91.9 ± 0.2** |
 
-### Table 3. Pixel-AUROC ↑
+### Table 3. Pixel-AUROC (↑)
 
 | Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -67,7 +67,7 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 | DAGM [59] | 87.6 ± 0.0 | 82.5 ± 0.3 | **95.6 ± 0.3** | 91.5 ± 0.4 | 79.7 ± 0.0 | — | — | 94.3† | 94.9 ± 0.2 |
 | DTD-Synthetic [60] | 83.9 ± 0.0 | 95.4 ± 0.2 | 97.9 ± 0.2 | 97.7 ± 0.3 | 97.7 ± 0.0 | — | 97.9† | 98.6† | **98.9 ± 0.2** |
 | **Average** | 79.2 ± 0.0 | 84.9 ± 0.3 | 94.5 ± 0.3 | 94.2 ± 0.3 | 83.5 ± 0.0 | — | — | 94.6† | **95.3 ± 0.1** |
-### Table 4. Pixel-F1-max ↑
+### Table 4. Pixel-F1-max (↑)
 
 | Dataset | WinCLIP [24] | APRIL-GAN [28] | AnomalyCLIP [25] | AdaCLIP [26] | AnoCLIP [27] | RDMD [48] | GenCLIP [47] | DACLIP [49] | FgmCLIP (Ours) |
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
