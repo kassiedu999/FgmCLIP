@@ -52,7 +52,7 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 | BTAD [57] | 70.9 ± 0.0 | 68.5 ± 0.3 | 87.3 ± 0.1 | 93.7 ± 0.2 | 72.8 ± 0.0 | 88.8† | **96.9†** | 82.0† | 95.6 ± 0.2 |
 | SDD [58] | 77.4 ± 0.0 | 71.6 ± 0.4 | 80.0 ± 0.1 | 90.4 ± 0.3 | 90.8 ± 0.0 | **93.5†** | 68.9† | 89.5† | 90.4 ± 0.2 |
 | DAGM [59] | 79.5 ± 0.0 | 83.8 ± 0.2 | 92.4 ± 0.3 | 89.7 ± 0.3 | 76.1 ± 0.0 | — | — | **95.1†** | 93.7 ± 0.3 |
-| DTD-Synthetic [60] | 92.6 ± 0.0 | 95.1 ± 0.3 | 96.9 ± 0.3 | 98.0 ± 0.1 | 93.3 ± 0.0 | — | 96.3† | 97.0† | **98.6 ± 0.3** |
+| DTD-Synthetic [60] | 92.6 ± 0.0 | 95.1 ± 0.3 | 96.9 ± 0.3 | 98.0 ± 0.4 | 93.3 ± 0.0 | — | 96.3† | 97.0† | **98.6 ± 0.3** |
 | **Average** | 81.1 ± 0.0 | 82.0 ± 0.3 | 88.6 ± 0.2 | 89.9 ± 0.3 | 84.6 ± 0.0 | — | — | 90.0† | **91.9 ± 0.2** |
 
 ### Table 3. Pixel-AUROC ↑
@@ -78,7 +78,7 @@ All values are expressed as percentages (%); ↑ indicates that higher is better
 | SDD [58] | 21.3 ± 0.0 | **56.0 ± 0.3** | 35.6 ± 0.3 | 50.1 ± 0.1 | 23.1 ± 0.0 | — | — | 48.2† | 48.7 ± 0.2 |
 | DAGM [59] | 13.9 ± 0.0 | 58.0 ± 0.1 | 53.7 ± 0.2 | 55.3 ± 0.1 | 12.8 ± 0.0 | — | — | 62.6† | **62.9 ± 0.4** |
 | DTD-Synthetic [60] | 16.1 ± 0.0 | 72.8 ± 0.2 | 67.8 ± 0.2 | 72.6 ± 0.3 | 46.8 ± 0.0 | — | — | 72.6† | **73.6 ± 0.4** |
-| **Average** | 18.8 ± 0.0 | 47.2 ± 0.3 | 40.5 ± 0.3 | 48.2 ± 0.3 | 23.8 ± 0.0 | — | — | 48.1† | **49.6 ± 0.3** |
+| **Average** | 18.8 ± 0.0 | 47.2 ± 0.3 | 40.5 ± 0.3 | 48.2 ± 0.2 | 23.8 ± 0.0 | — | — | 48.1† | **49.6 ± 0.3** |
 
 **Notes:** † marks results taken directly from the original papers. “—” indicates that the corresponding result was not reported and the method’s source code is not publicly available. Other results are from our reproduction experiments, reported as mean ± standard deviation over five independent runs with seeds 111-115. 
 
