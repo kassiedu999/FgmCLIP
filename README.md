@@ -134,7 +134,7 @@ The backbone name identifies the pretrained CLIP variant; the input resolution u
 
 ## News
 
-
+- 2026-06-24: Submitted to Computers and Electrical Engineering
 - The paper is currently under review. The code will be made available upon acceptance.
 
 ## Acknowledgements
