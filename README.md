@@ -3,25 +3,25 @@
 ## Introduction
 
 <p align="center">
-  <img src="Graphical-Abstract.jpg" width="80%" alt="GPGA Graphical-Abstract">
+  <img src="Graphical-Abstract.jpg" width="80%" alt="FgmCLIP Graphical-Abstract">
 </p>
 
 <p align="justify">
-  <strong>Abstract:</strong> 		Zero-shot industrial anomaly detection aims to detect and localize unknown abnormal regions in target-domain samples by training only on source-domain data. However, most existing methods adopt a cascaded framework of ``embedding representation-similarity matching-anomaly scoring-anomaly output''. In this framework, anomaly scores are not used as feedback to dynamically guide information interaction and semantic aggregation among image patch embeddings. Consequently, anomaly-related information remains insufficiently utilized in constructing image embeddings, causing the models to easily confuse salient responses induced by background variations or local appearance changes with real anomalies in scenarios with complex background variations and low contrast, thereby affecting detection performance.	To this end, this paper proposes a patch embedding-anomaly score feedback guidance mechanism (FgmCLIP). FgmCLIP employs an anomaly score-guided patch embedding representation approach that jointly incorporates correlations among patch embeddings and an anomaly score-guided bias into attention modeling. By combining residual fusion with cluster-level weighted fusion, it performs semantic aggregation of potentially abnormal patch embeddings to construct more discriminative image embeddings. It further develops a dual-path anomaly scoring loss to impose joint constraints on image-level anomaly discrimination and pixel-level anomaly localization, thereby improving anomaly detection performance. Experimental results on seven representative industrial anomaly detection datasets show that FgmCLIP achieves average scores of 90.8, 91.9, 95.3, and 49.6 on Image-AUROC (area under the receiver operating characteristic curve), Image-AP (average precision), Pixel-AUROC, and Pixel-F1-max (maximum F1-score)}, respectively, outperforming state-of-the-art methods by 0.67%, 2.11%, 0.74%, 2.90%, respectively. FgmCLIP also enables accurate detection of diverse anomaly types in complex industrial scenarios.
+  <strong>Abstract:</strong> 		Zero-shot industrial anomaly detection aims to detect and localize unknown abnormal regions in target-domain samples by training only on source-domain data. However, most existing methods adopt a cascaded framework of ``embedding representation-similarity matching-anomaly scoring-anomaly output''. In this framework, anomaly scores are not used as feedback to dynamically guide information interaction and semantic aggregation among image patch embeddings. Consequently, anomaly-related information remains insufficiently utilized in constructing image embeddings, causing the models to easily confuse salient responses induced by background variations or local appearance changes with real anomalies in scenarios with complex background variations and low contrast, thereby affecting detection performance.	To this end, this paper proposes a patch embedding-anomaly score feedback guidance mechanism (FgmCLIP). FgmCLIP employs an anomaly score-guided patch embedding representation approach that jointly incorporates correlations among patch embeddings and an anomaly score-guided bias into attention modeling. By combining residual fusion with cluster-level weighted fusion, it performs semantic aggregation of potentially abnormal patch embeddings to construct more discriminative image embeddings. It further develops a dual-path anomaly scoring loss to impose joint constraints on image-level anomaly discrimination and pixel-level anomaly localization, thereby improving anomaly detection performance. Experimental results on seven representative industrial anomaly detection datasets show that FgmCLIP achieves average scores of 90.8, 91.9, 95.3, and 49.6 on Image-AUROC (area under the receiver operating characteristic curve), Image-AP (average precision), Pixel-AUROC, and Pixel-F1-max (maximum F1-score), respectively, outperforming state-of-the-art methods by 0.67%, 2.11%, 0.74%, 2.90%, respectively. FgmCLIP also enables accurate detection of diverse anomaly types in complex industrial scenarios.
 </p>
 
 
 ## Highlights
 
-- **We propose FgmCLIP, a patch embedding–anomaly score feedback guidance mechanism for zero-shot industrial anomaly detection.
-- **AGR uses anomaly scores to guide patch interactions and weighted cluster fusion.
-- **DPL supervises image-level discrimination and pixel-level localization.
-- **FgmCLIP achieves competitive performance on seven industrial anomaly detection datasets, including MVTec-AD, VisA, MPDD, BTAD, SDD, DAGM, and DTD-Synthetic.
+- We propose FgmCLIP, a patch embedding–anomaly score feedback guidance mechanism for zero-shot industrial anomaly detection.
+- AGR uses anomaly scores to guide patch interactions and weighted cluster fusion.
+- DPL supervises image-level discrimination and pixel-level localization.
+- FgmCLIP achieves competitive performance on seven industrial anomaly detection datasets, including MVTec-AD, VisA, MPDD, BTAD, SDD, DAGM, and DTD-Synthetic.
 
 
 ## Overview of FgmCLIP
 <p align="center">
-<img src="Overview of FgmCLIP.jpg" width="80%" alt="GPGA framework">
+<img src="Overview of FgmCLIP.jpg" width="80%" alt="FgmCLIP framework">
 </p>
 
 
@@ -63,7 +63,7 @@ In all four tables, means are expressed as percentages (%), and standard deviati
 | VisA [55] | 79.6† ± 0.0 | 94.2 ± 0.2 | 95.4 ± 0.3 | 95.5 ± 0.3 | 85.9† ± 0.0 | 94.9† | 95.3† | 95.6† | **95.9 ± 0.2** |
 | MPDD [56] | 76.4 ± 0.0 | 94.1 ± 0.4 | 96.5 ± 0.2 | 96.1 ± 0.3 | 62.3 ± 0.0 | **96.8†** | 96.2† | 96.4† | 96.4 ± 0.3 |
 | BTAD [57] | 72.7 ± 0.0 | 60.9 ± 0.3 | **94.1 ± 0.3** | 92.2 ± 0.2 | 75.2 ± 0.0 | 90.7† | 93.6† | 92.2† | 92.9 ± 0.3 |
-| SDD [58] | 68.8 ± 0.0 | 79.7 ± 0.2 | 90.7 ± 0.2 | **97.8 ± 0.3** | 97.1 ± 0.0 | 97.1† | 96.8† | 97.1† | **97.8 ± 0.1** |
+| SDD [58] | 68.8 ± 0.0 | 79.7 ± 0.2 | 90.7 ± 0.2 | 97.8 ± 0.3 | 97.1 ± 0.0 | 97.1† | 96.8† | 97.1† | **97.8 ± 0.1** |
 | DAGM [59] | 87.6 ± 0.0 | 82.5 ± 0.3 | **95.6 ± 0.3** | 91.5 ± 0.4 | 79.7 ± 0.0 | — | — | 94.3† | 94.9 ± 0.2 |
 | DTD-Synthetic [60] | 83.9 ± 0.0 | 95.4 ± 0.2 | 97.9 ± 0.2 | 97.7 ± 0.3 | 97.7 ± 0.0 | — | 97.9† | 98.6† | **98.9 ± 0.2** |
 | **Average** | 79.2 ± 0.0 | 84.9 ± 0.3 | 94.5 ± 0.3 | 94.2 ± 0.3 | 83.5 ± 0.0 | — | — | 94.6† | **95.3 ± 0.1** |
@@ -102,9 +102,9 @@ FgmCLIP is evaluated on seven industrial anomaly detection benchmarks. The datas
 |:--|:--|:--|:--|
 | MVTec-AD | Industrial | Object and texture anomaly detection benchmark with image-level labels and pixel-level masks. | [Google Drive](https://drive.google.com/drive/folders/126ZyuMsgrmwJd_7hlNJQitv_liXfRzJt?usp=sharing) |
 | VisA | Industrial | Visual anomaly benchmark for industrial object inspection across multiple product categories. | [Google Drive](https://drive.google.com/drive/folders/1cgpyk8Gfpl_GVnA_l-K8tOV67mKOZdZj?usp=sharing) |
-| MPDD | Industrial | Metal parts defect detection benchmark with image-level labels and pixel-level defect annotations. | [Official Repository](https://github.com/stepanje/MPDD) |
+| MPDD | Industrial | Metal parts defect detection benchmark with image-level labels and pixel-level defect annotations. | [Google Drive](https://drive.google.com/file/d/1cLkZs8pN8onQzfyNskeU_836JLjrtJz1/view) |
 | BTAD | Industrial | BTech industrial anomaly detection benchmark with three product categories. | [Google Drive](https://drive.google.com/drive/folders/1GW9kXgxJM0kC2TX3vWuydaiRkcdg7gjG?usp=sharing) |
-| SDD | Industrial | Surface defect detection benchmark with image-level labels and pixel-level annotations for defects on electrical commutators. | [Official Website](https://www.vicos.si/resources/kolektorsdd/) |
+| SDD | Industrial | Surface defect detection benchmark with image-level labels and pixel-level annotations for defects on electrical commutators. | [Google Drive](https://drive.google.com/drive/folders/1oqaxUZYi44jlLT4WtT6D5T6onPTNZXsu) |
 | DAGM | Industrial | Synthetic textured-surface defect benchmark with annotated defects. | [Google Drive](https://drive.google.com/drive/folders/1gkjep91EdTgDlEuEVfK-iKVr2mzJi81G?usp=sharing) |
 | DTD-Synthetic | Industrial | Synthetic anomaly localization benchmark built from texture images. | [Google Drive](https://drive.google.com/drive/folders/1VZIx-k5a6llIlTi2_lNTSJs3zzyelBlV?usp=sharing) |
 
@@ -112,7 +112,7 @@ FgmCLIP is evaluated on seven industrial anomaly detection benchmarks. The datas
 We adopt the same dataset structure and JSON format as [AnomalyCLIP](https://github.com/zqhang/AnomalyCLIP). After downloading a dataset, place it under your local dataset directory and make sure `meta.json` exists in the dataset root. We also provide scripts to generate the required JSON metadata files:
 
 
-### 2. Backbone and Training Configuration
+### 3. Backbone and Training Configuration
 
 | Item | Setting |
 |:--|:--|
